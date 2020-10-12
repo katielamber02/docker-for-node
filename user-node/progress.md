@@ -59,3 +59,46 @@ drwxr-xr-x 41 root root  4096 Oct 12 10:30 node_modules
 
 
 ```
+
+3. USER before EXPOSE:
+
+```
+USER node
+EXPOSE 3000
+```
+
+```
+docker build -t usernode .
+
+ ---> Running in 51372f5262b6
+npm WARN checkPermissions Missing write access to /node
+npm WARN user-node@1.0.0 No description
+npm WARN user-node@1.0.0 No repository field.
+
+npm ERR! code EACCES
+npm ERR! syscall access
+npm ERR! path /node
+npm ERR! errno -13
+npm ERR! Error: EACCES: permission denied, access '/node'
+npm ERR!  { [Error: EACCES: permission denied, access '/node']
+npm ERR!   stack: 'Error: EACCES: permission denied, access \'/node\'',
+npm ERR!   errno: -13,
+npm ERR!   code: 'EACCES',
+npm ERR!   syscall: 'access',
+npm ERR!   path: '/node' }
+npm ERR!
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
+npm ERR!
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/node/.npm/_logs/2020-10-12T10_43_45_815Z-debug.log
+The command '/bin/sh -c npm install && npm cache clean --force' returned a non-zero code: 243
+```
+
+WORKDIR /node creates directory as root
+WORKDIR /node/app
+so npm install will not work
