@@ -102,3 +102,18 @@ The command '/bin/sh -c npm install && npm cache clean --force' returned a non-z
 WORKDIR /node creates directory as root
 WORKDIR /node/app
 so npm install will not work
+
+4. Manually change permission:
+
+```
+FROM node:10-slim
+EXPOSE 3000
+WORKDIR /node
+COPY package*.json ./
+RUN mkdir app && chown -R node:node .
+USER node
+RUN npm install && npm cache clean --force
+WORKDIR /node/app
+COPY . .
+CMD ["node", "app.js"]
+```
