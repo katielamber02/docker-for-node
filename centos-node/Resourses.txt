@@ -1,0 +1,2 @@
+https://github.com/nodejs/docker-node/blob/140d3e49b9dce8532cfc06108f586802ca4be5f5/10/stretch/Dockerfile
+https://hub.docker.com/_/centos?tab=description
