@@ -117,3 +117,9 @@ WORKDIR /node/app
 COPY . .
 CMD ["node", "app.js"]
 ```
+
+5. Node expects to copy as user node:
+
+```
+COPY --chown=node:node . .
+```
