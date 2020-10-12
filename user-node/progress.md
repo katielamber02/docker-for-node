@@ -123,3 +123,6 @@ CMD ["node", "app.js"]
 ```
 COPY --chown=node:node . .
 ```
+
+6. run as root user:
+   docker-compose exec -u root
