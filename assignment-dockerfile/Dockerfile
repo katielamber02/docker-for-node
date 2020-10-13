@@ -14,6 +14,6 @@ RUN npm install && npm cache clean --force
 COPY . .
 
 # https://github.com/krallin/tini -> Alpine Linux Package
-ENTRYPOINT ["/sbin/tini", "--"]
+# ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["node", "app.js"]
