@@ -6,7 +6,7 @@ var express = require('express'),
     {Pool} = require('pg'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
+    
     methodOverride = require('method-override'),
     app = express(),
     server = require('http').Server(app),
@@ -72,7 +72,7 @@ function collectVotesFromResult(result) {
 }
 
 app.use(cookieParser());
-app.use(bodyParser());
+
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
