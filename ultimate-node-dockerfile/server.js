@@ -14,7 +14,7 @@ var express = require('express'),
 
 io.set('transports', ['polling']);
 
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 
 var pool = new pg.Pool({
   connectionString: 'postgres://postgres@db/postgres'

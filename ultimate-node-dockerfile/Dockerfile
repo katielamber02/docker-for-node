@@ -39,8 +39,11 @@ CMD ["nodemon", "server.js"]
 FROM dev as test
 COPY . .
 RUN npm audit && npm audit fix --force
+ARG MICROSCANNER_TOKEN
+ADD https://get.aquasec.com/microscanner /
 USER root
-
+RUN chmod +x /microscanner
+RUN /microscanner $MICROSCANNER_TOKEN --continue-on-failure
 
 FROM test as pre-prod
 RUN rm -rf ./tests && rm -rf ./node_modules
